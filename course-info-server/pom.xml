@@ -12,7 +12,6 @@
     <artifactId>course-info-server</artifactId>
 
     <properties>
-<!--        <slf4j.version>2.0.16</slf4j.version>-->
         <jersey-version>4.0.0-M1</jersey-version>
     </properties>
 
@@ -63,7 +62,6 @@
             <version>${jersey-version}</version>
             <scope>runtime</scope>
         </dependency>
-<!--        Java 8 optional type java.util.Optional<java.lang.String> not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jdk8" to enable handling-->
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jdk8</artifactId>
@@ -71,19 +69,7 @@
             <scope>runtime</scope>
         </dependency>
 
-<!--        A class jakarta.activation.DataSource for a default provider MessageBodyWriter<jakarta.activation.DataSource> was not found. The provider is not available.-->
-<!--        Mar 11, 2025 12:02:29 PM org.glassfish.jersey.server.wadl.WadlFeature configure-->
 
-        <!--        <dependency>-->
-<!--            <groupId>jakarta.activation</groupId>-->
-<!--            <artifactId>jakarta.activation-api</artifactId>-->
-<!--            <version>2.0.1</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.glassfish.jaxb</groupId>-->
-<!--            <artifactId>jaxb-runtime</artifactId>-->
-<!--            <version>4.0.3</version>-->
-<!--        </dependency>-->
     </dependencies>
     <build>
         <plugins>

@@ -1,24 +1,17 @@
 package com.pluralsight.courseinfo.repository;
 
 import com.pluralsight.courseinfo.domain.Course;
-import com.sun.jdi.PrimitiveValue;
 import org.h2.jdbcx.JdbcDataSource;
 
 import javax.sql.DataSource;
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-// we shouldn't make it public as it should only be accessed within this package and only through Interface("CourseRepository")
 class CourseJdbcRepository implements CourseRepository {
-//    Unsupported connection setting "AUTO_SERVICE"
-//    private static final String H2_DATABASE_URL = "jdbc:h2:file:%s;AUTO_SERVICE=TRUE;INIT=RUNSCRIPT FROM './db_init.sql'";
-//    This eradicate the error caused above
     private static final String H2_DATABASE_URL = "jdbc:h2:file:%s;INIT=RUNSCRIPT FROM './db_init.sql'";
-//    private static final String H2_DATABASE_URL = "jdbc:h2:file:%s;AUTO_SERVER=TRUE;INIT=RUNSCRIPT FROM './db_init.sql'";
 
     private final DataSource dataSource;
 
@@ -38,9 +31,7 @@ class CourseJdbcRepository implements CourseRepository {
     }
     @Override
     public void saveCourse(Course course) {
-//        connecting to our H2 DB through JDBC and we need to close the resource after try block so we include in try()
         try( Connection connection = dataSource.getConnection()){
-//            these are statements which can hold placeholders
             PreparedStatement statement = connection.prepareStatement(INSERT_COURSE);
             statement.setString(1, course.id());
             statement.setString(2, course.name());
@@ -57,10 +48,7 @@ class CourseJdbcRepository implements CourseRepository {
     public List<Course> getAllCourses() {
         try(Connection connection = dataSource.getConnection())
         {
-//            these r simple statements
             Statement statement = connection.createStatement();
-//            we can invoke executeQuery  which execute SQL queries
-//            since its sql query we get o/p in form of ResultSet
 
             ResultSet resultSet = statement.executeQuery("SELECT * FROM COURSES");
             List<Course> courses = new ArrayList<>();
@@ -71,7 +59,6 @@ class CourseJdbcRepository implements CourseRepository {
                         resultSet.getString(4),
                         Optional.ofNullable(resultSet.getString(5))));
             }
-            // returned data shouldn't be modified by caller/client
             return Collections.unmodifiableList(courses);
         }
         catch (SQLException e){
@@ -82,7 +69,6 @@ class CourseJdbcRepository implements CourseRepository {
     @Override
     public void addNotes(String id, String notes) {
         try( Connection connection = dataSource.getConnection()){
-//            these are statements which can hold placeholders
             PreparedStatement statement = connection.prepareStatement(ADD_NOTES);
             statement.setString(1, notes);
             statement.setString(2, id);

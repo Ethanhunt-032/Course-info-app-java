@@ -24,6 +24,4 @@ class PluralsightCourseTest {
         PluralsightCourse course =  new PluralsightCourse("teb","titel",duration,"edhbv",false);
         assertEquals(expectedMinutes,course.durationInMinutes());
     }
-    
-    // to run test using MAVEN  - Cmd : mvn clean test
 }

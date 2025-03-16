@@ -1,7 +1,6 @@
 package com.pluralsight.courseinfo.cli.service;
 
 import com.pluralsight.courseinfo.domain.Course;
-//import com.pluralsight.courseinfo.repository.CourseJdbcRepository;
 import com.pluralsight.courseinfo.repository.CourseRepository;
 import org.junit.jupiter.api.Test;
 
@@ -15,8 +14,6 @@ class CourseStorageServiceTest {
 
     @Test
     void storePluralsightCourses() {
-//         we can't instantiate this "CourseJdbcRepository" because it's not public so we create fake implementation of courseRepository for our testing
-//        CourseRepository repository = new CourseJdbcRepository("test") ;
         CourseRepository repository = new InMemoryCourseRepository() ;
         CourseStorageService courseStorageService = new CourseStorageService(repository);
         PluralsightCourse ps1 = new PluralsightCourse("1", "Title 1", "01:40:00.13", "/url-1",false);

@@ -13,8 +13,6 @@ import java.util.List;
 
 public class CourseRetrievalService {
     private static final String PS_URI = "https://app.pluralsight.com/profile/data/author/%s/all-content";
-//    private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
-    // to make it more Robust
     private static final HttpClient HTTP_CLIENT = HttpClient
             .newBuilder()
             .followRedirects(HttpClient.Redirect.ALWAYS)

@@ -9,11 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-//Any endpoints we define in this class will be hosted in /courses
 @Path("/courses")
 public class CourseResource {
     private static final Logger LOG = LoggerFactory.getLogger(CourseResource.class);
@@ -38,7 +35,6 @@ public class CourseResource {
 
     @POST
     @Path("/{id}/notes")
-//    path is replative to mentioned at above the class i.e. BASE_URL/course/{id}/notes/
     @Consumes(MediaType.TEXT_PLAIN)
     public void addNotes(@PathParam("id") String id,String notes){
         courseRepository.addNotes(id, notes);
